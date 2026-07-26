@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'icons/*.png', 'model/*'],
+      includeAssets: ['favicon.ico', 'icons/*.png', 'model/*', 'screenshots/*'],
       manifest: {
         name: 'VegetarianScan',
         short_name: 'VegetarianScan',
