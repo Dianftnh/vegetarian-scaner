@@ -13,29 +13,29 @@ function PreScanSection({ onRequestPermission, onBack, error, permissionState, i
               <ShieldAlert size={48} />
             </div>
 
-            <h2 className="prescan-title">Akses Kamera Diperlukan</h2>
+            <h2 className="prescan-title">Camera Access Required</h2>
             <p className="prescan-desc">
-              {error || 'VegetarianScan membutuhkan izin akses kamera perangkat Anda untuk dapat memindai dan mengenali sayuran.'}
+              {error || 'VegetarianScan requires camera access permission to scan and recognize vegetables.'}
             </p>
 
             <div className="prescan-tips">
-              <p className="tips-title">Langkah penyelesaian:</p>
+              <p className="tips-title">Troubleshooting steps:</p>
               <ul>
-                <li>Klik ikon gembok / izin di sebelah URL browser Anda.</li>
-                <li>Ubah izin Kamera menjadi <strong>&quot;Izinkan&quot; (Allow)</strong>.</li>
-                <li>Klik tombol <strong>Coba Lagi</strong> di bawah ini.</li>
+                <li>Click the lock / permission icon next to your browser URL.</li>
+                <li>Set Camera permission to <strong>&quot;Allow&quot;</strong>.</li>
+                <li>Click <strong>Try Again</strong> below.</li>
               </ul>
             </div>
 
             <div className="prescan-actions">
               <button className="primary-cta-btn" onClick={onRequestPermission}>
                 <RefreshCw size={18} />
-                <span>Coba Lagi</span>
+                <span>Try Again</span>
               </button>
 
               <button className="secondary-btn" onClick={onBack}>
                 <ArrowLeft size={18} />
-                <span>Kembali ke Beranda</span>
+                <span>Back to Home</span>
               </button>
             </div>
           </div>
@@ -46,9 +46,9 @@ function PreScanSection({ onRequestPermission, onBack, error, permissionState, i
               <Camera size={44} />
             </div>
 
-            <h2 className="prescan-title">Siap Mengenali Sayuran?</h2>
+            <h2 className="prescan-title">Ready to Recognize Vegetables?</h2>
             <p className="prescan-desc">
-              VegetarianScan membutuhkan akses kamera perangkat Anda untuk dapat mengenali jenis sayuran dan menyajikan fakta unik secara langsung.
+              VegetarianScan requires access to your device camera to recognize vegetables and provide real-time AI facts.
             </p>
 
             <div className="prescan-flow-steps">
@@ -56,7 +56,7 @@ function PreScanSection({ onRequestPermission, onBack, error, permissionState, i
                 <div className="flow-icon">
                   <Camera size={20} />
                 </div>
-                <span>1. Kamera</span>
+                <span>1. Camera</span>
               </div>
               <span className="flow-arrow">→</span>
               <div className="flow-step">
@@ -70,13 +70,13 @@ function PreScanSection({ onRequestPermission, onBack, error, permissionState, i
                 <div className="flow-icon">
                   <Lightbulb size={20} />
                 </div>
-                <span>3. Fakta Unik</span>
+                <span>3. AI Facts</span>
               </div>
             </div>
 
             <div className="privacy-note">
               <CheckCircle2 size={16} className="check-icon" />
-              <span>Privasi Anda terjamin. Gambar kamera diproses 100% di browser lokal Anda tanpa diunggah ke server.</span>
+              <span>Your privacy is protected. Video frames are processed 100% locally in your browser.</span>
             </div>
 
             <div className="prescan-actions">
@@ -86,12 +86,12 @@ function PreScanSection({ onRequestPermission, onBack, error, permissionState, i
                 disabled={!isModelReady}
                 style={{ opacity: isModelReady ? 1 : 0.7 }}
               >
-                <span>{isModelReady ? 'Izinkan Kamera & Mulai' : 'Menyiapkan Model AI...'}</span>
+                <span>{isModelReady ? 'Allow Camera & Start' : 'Preparing AI Model...'}</span>
               </button>
 
               <button className="secondary-btn" onClick={onBack}>
                 <ArrowLeft size={18} />
-                <span>Kembali</span>
+                <span>Back</span>
               </button>
             </div>
           </div>

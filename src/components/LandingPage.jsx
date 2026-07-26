@@ -16,46 +16,47 @@ function LandingPage({ onStart }) {
         <div className="hero-container">
           <div className="hero-badge">
             <Sparkles size={16} className="hero-badge-icon" />
-            <span>Pengenal Sayuran AI Berbasis Browser</span>
+            <span>Browser-Based AI Vegetable Identifier</span>
           </div>
 
           <h1 className="hero-headline">
-            Kenali Sayuran <br />
-            <span className="hero-highlight">Lebih Cerdas</span> dengan AI.
+            Recognize Vegetables <br />
+            <span className="hero-highlight">Smarter</span> with AI.
           </h1>
 
           <p className="hero-subtext">
-            Arahkan kamera ke sayuran, biarkan AI mengenalinya secara instan, dan temukan fakta unik menarik dalam hitungan detik.
+            Point your camera at a vegetable, let AI identify it instantly, and discover educational fun facts in seconds.
           </p>
 
           <div className="hero-actions">
             <button className="primary-cta-btn" onClick={onStart}>
-              <span>Mulai Mengenali</span>
+              <span>Start Recognition</span>
               <ArrowRight size={20} />
             </button>
             <a href="#how-it-works" className="secondary-link" onClick={scrollToHowItWorks}>
-              Lihat Cara Kerja ↓
+              How It Works ↓
             </a>
           </div>
 
           <div className="hero-feature-pills">
             <div className="feature-pill">
               <Cpu size={16} className="pill-icon" />
-              <span>AI Berbasis Browser (WebGPU/WebGL)</span>
+              <span>Browser-Based AI (WebGPU/WebGL)</span>
             </div>
             <div className="feature-pill">
               <WifiOff size={16} className="pill-icon" />
-              <span>Dapat Digunakan Secara Offline*</span>
+              <span>Offline Capability Enabled*</span>
             </div>
             <div className="feature-pill">
               <ShieldCheck size={16} className="pill-icon" />
-              <span>Privasi Terjaga Tanpa Kirim Gambar</span>
+              <span>100% Local Privacy</span>
             </div>
           </div>
         </div>
 
+        {/* Visual Graphic Mockup */}
         <div className="hero-visual">
-          <div className="visual-card-preview">
+          <div className="visual-card">
             <div className="visual-card-header">
               <span className="visual-dot red"></span>
               <span className="visual-dot yellow"></span>
@@ -64,13 +65,13 @@ function LandingPage({ onStart }) {
             </div>
             <div className="visual-card-body">
               <div className="visual-scanner-demo">
-                <div className="visual-scanner-frame">
-                  <div className="visual-scanner-line"></div>
-                  <div className="demo-veggie-icon">🥕</div>
+                <div className="demo-scan-line"></div>
+                <div className="demo-badge">
+                  <span className="demo-badge-dot"></span>
+                  <span>Soybean • 98% Confidence</span>
                 </div>
-                <div className="visual-ai-pill">
-                  <span className="ai-dot active"></span>
-                  <span>Wortel Terdeteksi (98%)</span>
+                <div className="demo-fact-box">
+                  <p>&quot;Soybeans are legumes that are rich in protein and widely used to make foods such as tofu and tempeh.&quot;</p>
                 </div>
               </div>
             </div>
@@ -81,9 +82,8 @@ function LandingPage({ onStart }) {
       {/* How It Works Section */}
       <section id="how-it-works" className="how-it-works-section">
         <div className="section-header">
-          <span className="section-badge">PANDUAN</span>
-          <h2 className="section-title">Cara Kerjanya</h2>
-          <p className="section-subtitle">Tiga langkah mudah untuk mengenali sayuran dan mempelajari nutrisinya.</p>
+          <h2 className="section-title">How VegetarianScan Works</h2>
+          <p className="section-subtitle">Three easy steps to recognize vegetables and learn interesting facts.</p>
         </div>
 
         <div className="steps-grid">
@@ -92,9 +92,9 @@ function LandingPage({ onStart }) {
             <div className="step-icon-wrapper">
               <Camera size={32} />
             </div>
-            <h3 className="step-title">Arahkan Kamera</h3>
+            <h3 className="step-title">Allow Camera Access</h3>
             <p className="step-desc">
-              Arahkan kamera perangkat Anda ke sayuran segar yang ingin diidentifikasi.
+              Grant camera access so the browser can stream video frames in real-time.
             </p>
           </div>
 
@@ -103,29 +103,29 @@ function LandingPage({ onStart }) {
             <div className="step-icon-wrapper">
               <Cpu size={32} />
             </div>
-            <h3 className="step-title">AI Mengenali</h3>
+            <h3 className="step-title">AI Recognition</h3>
             <p className="step-desc">
-              VegetarianScan menggunakan Computer Vision berbasis browser untuk mengenali jenis sayuran secara langsung.
+              VegetarianScan uses browser-based Computer Vision to identify vegetable types instantly.
             </p>
           </div>
 
           <div className="step-card">
-            <span className="step-number">03</span>
+            <div className="step-number">03</div>
             <div className="step-icon-wrapper">
               <Sparkles size={28} />
             </div>
-            <h3 className="step-title">Temukan Fakta</h3>
+            <h3 className="step-title">Discover Facts</h3>
             <p className="step-desc">
-              Generative AI lokal menghasilkan fakta unik, edukatif, dan nutrisi menarik seputar sayuran tersebut.
+              Local Generative AI creates educational and interesting nutrition facts about the vegetable.
             </p>
           </div>
         </div>
 
         <div className="bottom-cta-box">
-          <h3>Siap Mencoba VegetarianScan?</h3>
-          <p>Tanpa pendaftaran, langsung gunakan di browser Anda.</p>
+          <h3>Ready to try VegetarianScan?</h3>
+          <p>No registration needed, use directly in your browser.</p>
           <button className="primary-cta-btn" onClick={onStart}>
-            <span>Mulai Mengenali Sekarang</span>
+            <span>Start Recognition Now</span>
             <ArrowRight size={20} />
           </button>
         </div>

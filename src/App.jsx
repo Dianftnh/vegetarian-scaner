@@ -279,7 +279,7 @@ function App() {
             onBack={handleNavigateHome}
             error={state.error}
             permissionState={state.permissionState}
-            isModelReady={state.modelStatus === 'Model AI Siap'}
+            isModelReady={state.modelStatus === 'AI Model Ready' || state.modelStatus === 'Model AI Siap'}
           />
         )}
 
