@@ -5,7 +5,7 @@ const initialState = {
   permissionState: 'idle', // 'idle' | 'prompting' | 'granted' | 'denied'
   appState: 'idle', // 'idle' | 'analyzing' | 'result'
   isRunning: false,
-  modelStatus: 'Memuat Model AI...',
+  modelStatus: 'Loading AI Model...',
   detectionResult: null,
   funFactData: null,
   error: null,

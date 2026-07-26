@@ -1,7 +1,7 @@
 import { Sprout, ScanLine } from 'lucide-react';
 
 function Header({ modelStatus, currentView, onNavigateHome, onStartScan }) {
-  const isModelReady = modelStatus === 'Model AI Siap';
+  const isModelReady = modelStatus === 'AI Model Ready' || modelStatus === 'Model AI Siap';
 
   const handleBrandClick = () => {
     if (onNavigateHome) {

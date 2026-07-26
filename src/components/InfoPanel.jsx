@@ -17,14 +17,14 @@ function InfoPanel({ appState, detectionResult, funFactData, error, onCopyFact, 
 
   const renderIdleState = () => (
     <div id="state-idle" className="result-card idle-card">
-      <div className="panel-badge">Hasil Deteksi</div>
+      <div className="panel-badge">Detection Result</div>
       <div className="idle-content">
         <div className="idle-icon">
           <Sparkles size={36} />
         </div>
-        <h3 className="panel-state-title">Belum Ada Hasil</h3>
+        <h3 className="panel-state-title">No Result Yet</h3>
         <p className="panel-state-desc">
-          Arahkan kamera ke sayuran dan tekan tombol <strong>Scan</strong> untuk mengenali sayuran dan melihat fakta unik.
+          Point camera at a vegetable and press <strong>Scan</strong> to recognize it and view interesting AI facts.
         </p>
         {error && (
           <p className="panel-error-text">
@@ -37,7 +37,7 @@ function InfoPanel({ appState, detectionResult, funFactData, error, onCopyFact, 
 
   const renderAnalyzingState = () => (
     <div id="state-loading" className="result-card loading-card">
-      <div className="panel-badge">Hasil Deteksi</div>
+      <div className="panel-badge">Detection Result</div>
       <div className="loading-content">
         <div className="loading-animation">
           <div className="loading-ring"></div>
@@ -45,8 +45,8 @@ function InfoPanel({ appState, detectionResult, funFactData, error, onCopyFact, 
             <Search size={22} />
           </div>
         </div>
-        <h3 className="panel-state-title">Mengenali Sayuran...</h3>
-        <p className="panel-state-desc">Sedang menganalisis gambar pada frame kamera.</p>
+        <h3 className="panel-state-title">Recognizing Vegetable...</h3>
+        <p className="panel-state-desc">Analyzing video frame with TensorFlow.js...</p>
       </div>
     </div>
   );
@@ -61,7 +61,7 @@ function InfoPanel({ appState, detectionResult, funFactData, error, onCopyFact, 
         return (
           <div id="fun-fact-loading" className="fun-fact-loading">
             <div className="fun-fact-loading-spinner"></div>
-            <span>Membuat fakta menarik...</span>
+            <span>Generating AI fun fact...</span>
           </div>
         );
       }
@@ -69,7 +69,7 @@ function InfoPanel({ appState, detectionResult, funFactData, error, onCopyFact, 
       if (funFactData === 'error') {
         return (
           <div className="fun-fact-error-box">
-            <p>Fakta menarik belum berhasil dibuat. Coba lagi.</p>
+            <p>Failed to generate fun fact. Please try again.</p>
             {onRetryFact && (
               <button
                 className="retry-fact-btn"
@@ -90,7 +90,7 @@ function InfoPanel({ appState, detectionResult, funFactData, error, onCopyFact, 
                 }}
               >
                 <RefreshCw size={14} />
-                <span>Buat Fakta Lagi</span>
+                <span>Generate Fact Again</span>
               </button>
             )}
           </div>
@@ -103,7 +103,7 @@ function InfoPanel({ appState, detectionResult, funFactData, error, onCopyFact, 
     return (
       <div id="state-result" className="result-card result-main">
         <div className="result-header">
-          <span className="panel-badge">Hasil Deteksi</span>
+          <span className="panel-badge">Detection Result</span>
           <div className="detected-badge">
             <CheckCircle size={14} />
             <span id="detected-name">{detectionResult.className}</span>
@@ -112,7 +112,7 @@ function InfoPanel({ appState, detectionResult, funFactData, error, onCopyFact, 
 
         <div className="confidence-section">
           <div className="confidence-header">
-            <span className="confidence-label">Tingkat Kepercayaan</span>
+            <span className="confidence-label">Confidence Level</span>
             <span id="detected-confidence" className="confidence-value">{confidence}%</span>
           </div>
           <div className="confidence-track">
@@ -130,17 +130,17 @@ function InfoPanel({ appState, detectionResult, funFactData, error, onCopyFact, 
               <div className="fun-fact-icon">
                 <Lightbulb size={20} />
               </div>
-              <h4 className="fun-fact-title">Fakta Unik</h4>
+              <h4 className="fun-fact-title">AI Fun Fact</h4>
             </div>
             {funFactData && funFactData !== 'error' && (
               <button
                 id="btn-copy"
                 className={`copy-btn ${copied ? 'copied' : ''}`}
                 onClick={handleCopy}
-                title={copied ? 'Tersalin!' : 'Salin fakta'}
+                title={copied ? 'Copied!' : 'Copy fact'}
               >
                 {copied ? <Check size={16} /> : <Copy size={16} />}
-                <span>{copied ? 'Tersalin' : 'Salin'}</span>
+                <span>{copied ? 'Copied' : 'Copy'}</span>
               </button>
             )}
           </div>
@@ -153,7 +153,7 @@ function InfoPanel({ appState, detectionResult, funFactData, error, onCopyFact, 
 
         <div className="share-hint">
           <Share2 size={13} />
-          <span>Salin dan bagikan fakta menarik ini!</span>
+          <span>Copy and share this interesting fact!</span>
         </div>
       </div>
     );

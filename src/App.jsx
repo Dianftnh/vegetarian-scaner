@@ -103,36 +103,36 @@ function App() {
 
     const initServices = async () => {
       try {
-        actions.setModelStatus('Memuat Model AI...');
+        actions.setModelStatus('Loading AI Model...');
         actions.setServices({
           camera: cameraServiceRef.current,
           detector: detectionServiceRef.current,
           generator: rootFactsServiceRef.current
         });
 
-        console.log('🚀 Inisialisasi DetectionService (TFJS)...');
+        console.log('🚀 Initializing DetectionService (TFJS)...');
         await detectionServiceRef.current.loadModel();
         if (!isMounted) return;
 
-        console.log('📷 Deteksi peranti kamera...');
+        console.log('📷 Detecting camera device...');
         await cameraServiceRef.current.loadCameras();
         if (!isMounted) return;
 
-        actions.setModelStatus('Menyiapkan Generator Facts AI...');
+        actions.setModelStatus('Preparing AI Facts Generator...');
         try {
           await rootFactsServiceRef.current.loadModel();
         } catch (genError) {
-          console.warn('⚠️ Generative AI tidak dapat dimuat secara lokal, fallback ke mode dasar:', genError);
+          console.warn('⚠️ Generative AI could not be loaded locally:', genError);
         }
 
         if (isMounted) {
-          actions.setModelStatus('Model AI Siap');
+          actions.setModelStatus('AI Model Ready');
         }
       } catch (err) {
-        console.error('❌ Gagal menginisialisasi AI Services:', err);
+        console.error('❌ Failed to initialize AI Services:', err);
         if (isMounted) {
-          actions.setModelStatus('Gagal memuat model');
-          actions.setError(err.message || 'Gagal memuat model AI');
+          actions.setModelStatus('Failed to load model');
+          actions.setError(err.message || 'Failed to load AI model');
         }
       }
     };
@@ -203,17 +203,17 @@ function App() {
       isRunningRef.current = true;
       startDetectionLoop();
     } catch (err) {
-      console.error('❌ Gagal mendapatkan izin / mengaktifkan kamera:', err);
+      console.error('❌ Failed to get permission / start camera:', err);
       actions.setPermissionState('denied');
-      actions.setError('Akses kamera tidak diizinkan. Harap beri izin kamera pada browser Anda.');
+      actions.setError('Camera access is not permitted. Please allow camera permissions in your browser.');
       actions.setRunning(false);
     }
   };
 
-  // Fungsi untuk mengontrol kamera di dalam Scanner Workspace
+  // Toggle camera function inside Scanner Workspace
   const handleToggleCamera = async () => {
     if (state.isRunning) {
-      // Stop Scan: Hentikan kamera dan loop, tetapi TETAP berada di Scanner Workspace
+      // Stop Scan: Stop camera and loop, but remain in Scanner Workspace
       isRunningRef.current = false;
       if (detectionCleanupRef.current) {
         clearInterval(detectionCleanupRef.current);
@@ -221,7 +221,7 @@ function App() {
       cameraServiceRef.current.stopCamera();
       actions.setRunning(false);
     } else {
-      // Scan Lagi: Aktifkan kembali kamera di dalam Scanner Workspace
+      // Scan Again: Reactivate camera in Scanner Workspace
       try {
         actions.setError(null);
         await cameraServiceRef.current.startCamera('default');
@@ -230,14 +230,14 @@ function App() {
         isRunningRef.current = true;
         startDetectionLoop();
       } catch (err) {
-        console.error('❌ Gagal mengaktifkan kamera kembali:', err);
-        actions.setError(err.message || 'Gagal mengaktifkan kamera');
+        console.error('❌ Failed to reactivate camera:', err);
+        actions.setError(err.message || 'Failed to activate camera');
         actions.setRunning(false);
       }
     }
   };
 
-  // Fungsi untuk mengubah nada fakta yang dihasilkan
+  // Change fun fact tone persona
   const handleToneChange = (newTone) => {
     setCurrentTone(newTone);
     rootFactsServiceRef.current.setTone(newTone);
@@ -247,15 +247,15 @@ function App() {
     }
   };
 
-  // Fungsi untuk menyalin fakta ke clipboard
+  // Copy fact to clipboard
   const handleCopyFact = async () => {
     if (!state.funFactData || state.funFactData === 'error') return;
     try {
       await navigator.clipboard.writeText(state.funFactData);
-      alert('Fakta menarik berhasil disalin!');
+      alert('Fun fact copied to clipboard!');
     } catch (err) {
-      console.error('❌ Gagal menyalin teks ke clipboard:', err);
-      actions.setError('Gagal menyalin fakta ke clipboard.');
+      console.error('❌ Failed to copy text to clipboard:', err);
+      actions.setError('Failed to copy fact to clipboard.');
     }
   };
 

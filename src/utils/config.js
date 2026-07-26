@@ -7,10 +7,10 @@ export const APP_CONFIG = {
 
 export const TONE_CONFIG = {
   availableTones: [
-    { value: 'normal', label: 'Normal' },
-    { value: 'funny', label: 'Lucu' },
-    { value: 'professional', label: 'Profesional' },
-    { value: 'casual', label: 'Santai' }
+    { value: 'normal', label: 'Normal / Informative' },
+    { value: 'funny', label: 'Playful / Funny' },
+    { value: 'professional', label: 'Professional' },
+    { value: 'casual', label: 'Casual' }
   ],
   defaultTone: 'normal'
 };

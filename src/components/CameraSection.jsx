@@ -51,16 +51,16 @@ function CameraSection({
     }
   };
 
-  const isModelReady = modelStatus === 'Model AI Siap';
+  const isModelReady = modelStatus === 'AI Model Ready' || modelStatus === 'Model AI Siap';
   const buttonDisabled = !isModelReady;
-  const buttonText = isRunning ? 'Hentikan Scan' : 'Scan Lagi';
+  const buttonText = isRunning ? 'Stop Scan' : 'Scan Again';
 
   return (
     <section className="camera-section" aria-label="Camera Feed and Controls">
       <div className="workspace-header">
-        <h2 className="workspace-title">Kenali Sayuran</h2>
+        <h2 className="workspace-title">Recognize Vegetables</h2>
         <p className="workspace-subtitle">
-          Arahkan kamera ke sayuran untuk mengidentifikasi dan mendapatkan fakta AI secara langsung.
+          Point camera at a vegetable to identify and generate real-time AI facts.
         </p>
       </div>
 
@@ -90,8 +90,8 @@ function CameraSection({
               <div className="camera-placeholder-icon">
                 <Camera size={44} />
               </div>
-              <p className="placeholder-title">Kamera Dihentikan</p>
-              <p className="placeholder-desc">Klik tombol &quot;Scan Lagi&quot; di bawah untuk mengaktifkan kembali kamera.</p>
+              <p className="placeholder-title">Camera Stopped</p>
+              <p className="placeholder-desc">Click &quot;Scan Again&quot; below to reactivate camera.</p>
               {error && (
                 <p className="camera-error-text">
                   {error}
@@ -116,12 +116,12 @@ function CameraSection({
         </div>
 
         <div className="settings-panel">
-          <h3 className="settings-title">Pengaturan</h3>
+          <h3 className="settings-title">Settings</h3>
           <div className="settings-grid">
             <div className="setting-item">
               <label htmlFor="camera-select" className="setting-label">
                 <Camera size={15} />
-                <span>Kamera</span>
+                <span>Camera</span>
               </label>
               <select
                 id="camera-select"
@@ -129,15 +129,15 @@ function CameraSection({
                 onChange={(e) => handleCameraChange(e.target.value)}
                 disabled={isRunning}
               >
-                <option value="default">Kamera Belakang</option>
-                <option value="front">Kamera Depan</option>
+                <option value="default">Rear Camera</option>
+                <option value="front">Front Camera</option>
               </select>
             </div>
 
             <div className="setting-item fps-setting">
               <label htmlFor="fps-slider" className="setting-label">
                 <Sliders size={15} />
-                <span>Kecepatan (<span id="fps-label">{fps} FPS</span>)</span>
+                <span>Speed (<span id="fps-label">{fps} FPS</span>)</span>
               </label>
               <div className="slider-wrapper">
                 <input
@@ -156,7 +156,7 @@ function CameraSection({
             <div className="setting-item tone-setting">
               <label htmlFor="tone-select" className="setting-label">
                 <Mic size={15} />
-                <span>Gaya Bahasa</span>
+                <span>Tone & Persona</span>
               </label>
               <select
                 id="tone-select"

@@ -18,39 +18,39 @@ export const validateModelMetadata = (metadata) => {
 
 export const getCameraErrorMessage = (error) => {
   const errorMessages = {
-    'NotAllowedError': 'Izin kamera ditolak. Harap izinkan akses kamera.',
-    'NotFoundError': 'Tidak ada kamera ditemukan pada perangkat ini.',
-    'NotReadableError': 'Kamera sedang digunakan oleh aplikasi lain.'
+    'NotAllowedError': 'Camera access denied. Please allow camera permissions in your browser.',
+    'NotFoundError': 'No camera device found on this device.',
+    'NotReadableError': 'Camera is currently in use by another application.'
   };
 
-  return errorMessages[error.name] || 'Gagal memulai kamera';
+  return errorMessages[error.name] || 'Failed to start camera';
 };
 
-const INDONESIAN_VEGGIE_NAMES = {
-  beetroot: 'Bit',
+const ENGLISH_VEGGIE_NAMES = {
+  beetroot: 'Beetroot',
   paprika: 'Paprika',
-  cabbage: 'Kubis',
-  carrot: 'Wortel',
-  cauliflower: 'Kembang Kol',
-  chilli: 'Cabai',
-  corn: 'Jagung',
-  cucumber: 'Mentimun',
-  eggplant: 'Terong',
-  garlic: 'Bawang Putih',
-  ginger: 'Jahe',
-  lettuce: 'Selada',
-  onion: 'Bawang Merah',
-  peas: 'Kacang Polong',
-  potato: 'Kentang',
-  turnip: 'Lobak',
-  soybean: 'Kedelai',
-  spinach: 'Bayam'
+  cabbage: 'Cabbage',
+  carrot: 'Carrot',
+  cauliflower: 'Cauliflower',
+  chilli: 'Chilli',
+  corn: 'Corn',
+  cucumber: 'Cucumber',
+  eggplant: 'Eggplant',
+  garlic: 'Garlic',
+  ginger: 'Ginger',
+  lettuce: 'Lettuce',
+  onion: 'Onion',
+  peas: 'Peas',
+  potato: 'Potato',
+  turnip: 'Turnip',
+  soybean: 'Soybean',
+  spinach: 'Spinach'
 };
 
 export const translateVegetableName = (rawName) => {
   if (!rawName) return rawName;
   const key = rawName.toLowerCase().trim();
-  return INDONESIAN_VEGGIE_NAMES[key] || rawName;
+  return ENGLISH_VEGGIE_NAMES[key] || (rawName.charAt(0).toUpperCase() + rawName.slice(1));
 };
 
 export const VEGETABLE_ALIASES = {
